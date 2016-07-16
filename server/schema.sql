@@ -8,7 +8,10 @@ CREATE TABLE messages (
 )
 /* Create other tables and define schemas for them here! */
 
-
+CREATE TABLE users (
+  /* Describe your table here.*/
+  username VARCHAR(100), ID int(11) 
+)
 
 
 /*  Execute this file from the command line by typing:
