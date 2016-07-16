@@ -6,32 +6,27 @@ var database = require('../db');
 module.exports = {
   messages: {
     get: function (req, res) {  
-      database.connect.query('SELECT * FROM messages',function(err,rows){
+      database.connect.query('SELECT * FROM messages', function(err,result){
         if(err) throw err;
-        console.log('Data received from Db:\n');
-        console.log(rows);
-      res.send(JSON.stringify(rows));
+        res.send(JSON.stringify(result));
       });
-    }, // a function which handles a get request for all messages
+    }, 
     post: function (req, res) {
-      database.connect.query('INSERT INTO messages SET ?', req.body, function(err,res){
+      database.connect.query('INSERT INTO messages SET ?', req.body, function(err){
         if(err) throw err;
-        console.log('Last insert ID:', res.insertId);
-        // database.connect.end()
       });
-      res.send()
-
-    } // a function which handles posting a message to the database
+      res.send("Data stored");
+    }
   },
 
   users: {
     // Ditto as above
     get: function (req, res) {
+      console.log('inside the get require')
        res.send('Hello from get in users');
     },
     post: function (req, res) {
-      
-      res.send('hello world')
+      res.send('hello world');
     }
   }
 };
